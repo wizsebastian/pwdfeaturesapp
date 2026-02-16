@@ -4,6 +4,7 @@ import { MediaLocationPage } from '../pages/MediaLocationPage.jsx'
 import { MotionBatteryPage } from '../pages/MotionBatteryPage.jsx'
 import { createMockDeviceCapabilities } from '../services/device/deviceCapabilities.mock.js'
 import { useCapabilityStore } from '../state/useCapabilityStore.js'
+import { usePwaInstall } from './usePwaInstall.js'
 
 const TABS = {
   dashboard: 'dashboard',
@@ -14,6 +15,7 @@ const TABS = {
 export function AppShell() {
   const [tab, setTab] = useState(TABS.dashboard)
   const deviceApi = useMemo(() => createMockDeviceCapabilities(), [])
+  const pwaInstall = usePwaInstall()
 
   const {
     capabilities,
@@ -43,6 +45,7 @@ export function AppShell() {
             capabilities={capabilities}
             systemInfo={systemInfo}
             onTestAll={testAllCapabilities}
+            pwaInstall={pwaInstall}
           />
         )}
 

@@ -55,6 +55,12 @@ body {
   cursor: pointer;
 }
 
+.header-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
 .page {
   display: grid;
   gap: 16px;
@@ -62,6 +68,75 @@ body {
   border: 1px solid rgba(19, 127, 236, 0.3);
   border-radius: 14px;
   padding: 16px;
+}
+
+.install-summary {
+  display: grid;
+  gap: 8px;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 12px;
+  padding: 12px;
+  background: rgba(15, 23, 42, 0.45);
+}
+
+.install-summary p {
+  margin: 0;
+}
+
+.install-guide {
+  display: grid;
+  gap: 10px;
+  border: 1px solid rgba(96, 165, 250, 0.5);
+  border-radius: 12px;
+  padding: 12px;
+  background: rgba(19, 127, 236, 0.14);
+}
+
+.install-guide h3,
+.guide-step-label,
+.guide-step,
+.guide-hint {
+  margin: 0;
+}
+
+.guide-step {
+  font-weight: 700;
+}
+
+.guide-hint {
+  color: #dbeafe;
+  font-size: 0.95rem;
+}
+
+.step-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.guide-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.ghost-btn {
+  background: transparent;
+  color: #dbeafe;
+  border: 1px solid rgba(147, 197, 253, 0.6);
+  border-radius: 10px;
+  padding: 9px 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.install-status {
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(110, 231, 183, 0.45);
+  background: rgba(16, 185, 129, 0.14);
+  color: #a7f3d0;
 }
 
 .section-header {
@@ -115,4 +190,18 @@ body {
 
 .system-info p {
   margin: 4px 0;
+}
+
+@media (max-width: 640px) {
+  .header-actions {
+    width: 100%;
+  }
+
+  .header-actions button {
+    flex: 1;
+  }
+
+  .guide-actions button {
+    flex: 1;
+  }
 }
