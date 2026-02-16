@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sensor Details - PWA Tester</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .cube-container {
+            perspective: 600px;
+        }
+        .cube {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: rotateX(-20deg) rotateY(45deg);
+        }
+        .cube-face {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border: 2px solid #137fec;
+            background: rgba(19, 127, 236, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .front  { transform: translateZ(50px); }
+        .back   { transform: rotateY(180deg) translateZ(50px); }
+        .right  { transform: rotateY(90deg) translateZ(50px); }
+        .left   { transform: rotateY(-90deg) translateZ(50px); }
+        .top    { transform: rotateX(90deg) translateZ(50px); }
+        .bottom { transform: rotateX(-90deg) translateZ(50px); }
+
+        .battery-pulse {
+            box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+            animation: pulse-green 2s infinite;
+        }
+        @keyframes pulse-green {
+            0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col font-display">
+<!-- Header Navigation -->
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-primary/10 px-6 py-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-icons text-primary">arrow_back_ios_new</span>
+<h1 class="text-xl font-bold tracking-tight">Sensor Details</h1>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+<span class="text-xs font-medium uppercase tracking-widest opacity-60">Live</span>
+</div>
+</header>
+<main class="flex-1 p-6 space-y-6 max-w-md mx-auto w-full">
+<!-- 3D Motion Visualization -->
+<section class="bg-white dark:bg-slate-900/50 rounded-xl border border-primary/20 p-8 flex flex-col items-center justify-center relative overflow-hidden group">
+<div class="absolute top-4 left-4">
+<span class="text-[10px] font-bold uppercase tracking-tighter text-primary">Motion Processor v2.0</span>
+</div>
+<div class="cube-container py-12">
+<div class="cube">
+<div class="cube-face front"></div>
+<div class="cube-face back"></div>
+<div class="cube-face right"></div>
+<div class="cube-face left"></div>
+<div class="cube-face top"></div>
+<div class="cube-face bottom"></div>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-8 w-full mt-6">
+<div class="text-center">
+<p class="text-[10px] uppercase opacity-50 mb-1">Pitch</p>
+<p class="text-lg font-bold text-primary">24.5°</p>
+</div>
+<div class="text-center">
+<p class="text-[10px] uppercase opacity-50 mb-1">Roll</p>
+<p class="text-lg font-bold text-primary">-12.2°</p>
+</div>
+<div class="text-center">
+<p class="text-[10px] uppercase opacity-50 mb-1">Yaw</p>
+<p class="text-lg font-bold text-primary">184°</p>
+</div>
+</div>
+</section>
+<!-- Battery & Environment -->
+<div class="grid grid-cols-1 gap-4">
+<section class="bg-white dark:bg-slate-900/50 rounded-xl border border-primary/10 p-5 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="relative w-12 h-12 flex items-center justify-center">
+<span class="material-icons text-green-500 text-3xl">battery_charging_full</span>
+<div class="absolute inset-0 border-2 border-green-500/20 rounded-full animate-ping"></div>
+</div>
+<div>
+<h3 class="font-bold text-lg leading-tight">85% Charged</h3>
+<p class="text-xs text-green-500 font-medium">Power Source: Connected</p>
+</div>
+</div>
+<div class="text-right">
+<span class="text-xs opacity-50 block">Remaining</span>
+<span class="font-bold">1h 42m</span>
+</div>
+</section>
+</div>
+<!-- Raw Data Metrics -->
+<section class="space-y-3">
+<h2 class="text-sm font-bold uppercase tracking-wider opacity-60 px-1">Accelerometer (m/s²)</h2>
+<div class="grid grid-cols-3 gap-3">
+<div class="bg-primary/5 border border-primary/10 rounded-lg p-3">
+<span class="text-[10px] block opacity-50 font-bold">X-AXIS</span>
+<span class="text-lg font-bold">0.02</span>
+</div>
+<div class="bg-primary/5 border border-primary/10 rounded-lg p-3">
+<span class="text-[10px] block opacity-50 font-bold">Y-AXIS</span>
+<span class="text-lg font-bold">9.81</span>
+</div>
+<div class="bg-primary/5 border border-primary/10 rounded-lg p-3">
+<span class="text-[10px] block opacity-50 font-bold">Z-AXIS</span>
+<span class="text-lg font-bold">-0.14</span>
+</div>
+</div>
+</section>
+<section class="space-y-3">
+<h2 class="text-sm font-bold uppercase tracking-wider opacity-60 px-1">Gyroscope (rad/s)</h2>
+<div class="bg-white dark:bg-slate-900/50 border border-primary/10 rounded-xl p-4">
+<div class="flex justify-between items-center mb-4">
+<div class="flex gap-2">
+<div class="w-1 h-8 bg-primary rounded-full"></div>
+<div class="w-1 h-5 bg-primary/40 rounded-full mt-auto"></div>
+<div class="w-1 h-10 bg-primary/60 rounded-full"></div>
+<div class="w-1 h-6 bg-primary/20 rounded-full mt-auto"></div>
+</div>
+<div class="text-right">
+<span class="text-xs opacity-50">Rotational Velocity</span>
+<p class="font-mono text-primary font-bold">0.000451</p>
+</div>
+</div>
+<div class="w-full h-1 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-2/3"></div>
+</div>
+</div>
+</section>
+<!-- Permission Status -->
+<div class="bg-amber-500/10 border border-amber-500/20 rounded-xl p-4 flex items-start gap-3">
+<span class="material-icons text-amber-500 mt-0.5">info</span>
+<p class="text-xs leading-relaxed text-amber-200/80">
+                Motion sensors require explicit user permission on iOS devices. Click anywhere in the visualizer to request access if data is not populating.
+            </p>
+</div>
+</main>
+<!-- Bottom Action Bar -->
+<footer class="p-6 pb-10 bg-background-light dark:bg-background-dark border-t border-primary/10">
+<div class="flex gap-4 max-w-md mx-auto">
+<button class="flex-1 bg-primary hover:bg-primary/90 text-white font-bold py-4 px-6 rounded-xl flex items-center justify-center gap-2 transition-all active:scale-95 shadow-lg shadow-primary/25">
+<span class="material-icons">vibration</span>
+<span>Vibrate</span>
+</button>
+<button class="w-16 h-16 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 rounded-xl flex items-center justify-center transition-all active:scale-95">
+<span class="material-icons text-primary">share</span>
+</button>
+</div>
+</footer>
+<!-- Capability Status Badges (Floating) -->
+<div class="fixed bottom-32 left-0 right-0 pointer-events-none flex justify-center gap-2">
+<span class="bg-green-500/20 text-green-500 text-[10px] font-bold px-2 py-1 rounded border border-green-500/30 uppercase">Web Share API: OK</span>
+<span class="bg-primary/20 text-primary text-[10px] font-bold px-2 py-1 rounded border border-primary/30 uppercase">Haptics: Ready</span>
+</div>
+</body></html>

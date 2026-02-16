@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Media &amp; Location Tools</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .waveform-bar {
+            transition: height 0.1s ease;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen font-display">
+<!-- iOS Status Bar Spacer -->
+<div class="h-12 w-full bg-background-light dark:bg-background-dark sticky top-0 z-50 flex items-center px-6 justify-between border-b border-primary/10">
+<div class="flex items-center gap-2">
+<span class="material-icons text-primary text-sm">sensors</span>
+<span class="text-[10px] font-bold tracking-widest uppercase opacity-70">Capability Tester</span>
+</div>
+<div class="flex items-center gap-1">
+<div class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>
+<span class="text-[10px] font-medium opacity-60">PWA ACTIVE</span>
+</div>
+</div>
+<main class="max-w-md mx-auto p-4 space-y-6 pb-24">
+<!-- Header -->
+<header class="flex items-center justify-between py-2">
+<div>
+<h1 class="text-2xl font-bold tracking-tight">Media &amp; Location</h1>
+<p class="text-xs text-slate-500 dark:text-slate-400">Native API Stress Test</p>
+</div>
+<button class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-icons">more_vert</span>
+</button>
+</header>
+<!-- Media Section (Top Half) -->
+<section class="space-y-4">
+<div class="flex items-center justify-between px-1">
+<h2 class="text-sm font-semibold uppercase tracking-widest text-primary">Camera &amp; Audio</h2>
+<span class="px-2 py-0.5 rounded-full bg-primary/20 text-primary text-[10px] font-bold">4K READY</span>
+</div>
+<!-- Camera Viewport -->
+<div class="relative group aspect-video rounded-xl overflow-hidden bg-slate-200 dark:bg-slate-800 border-2 border-primary/20 shadow-xl shadow-primary/5">
+<img alt="Camera Preview" class="w-full h-full object-cover opacity-80" data-alt="Live camera preview showing a photographer setup" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgM25NsKdNZitNi0HReNx48PnVPfhrrc5ZxsrQOUjBVr97yjFdttvIyoniZpz9hcGF_SO4eQ3zty2y0807garPjIlRKk0hY5IAhKGTn_yMxCx6xxmlzlIMO34KWcFqYC-eX7LqV01Pdd7kE_08Lsd1WsR3CFSzvtHEhe9LJeVQ9m2n4oreWCZn-_jrKvebEEv9tgg6kLw-OtLEnH4RzlOH3drIANvUAH2v92o_gyfDxtdCAIc8Q13TLBI5M-fy3gpiLswDmP6_350"/>
+<!-- Camera Overlay -->
+<div class="absolute inset-0 flex flex-col justify-between p-4">
+<div class="flex justify-between items-start">
+<div class="bg-black/40 backdrop-blur-md rounded-lg px-2 py-1 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
+<span class="text-[10px] font-mono font-bold text-white">REC 00:04:12</span>
+</div>
+<button class="w-8 h-8 rounded-full bg-black/40 backdrop-blur-md text-white flex items-center justify-center">
+<span class="material-icons text-sm">flip_camera_ios</span>
+</button>
+</div>
+<div class="flex justify-center">
+<button class="w-14 h-14 rounded-full bg-white p-1 shadow-lg active:scale-90 transition-transform">
+<div class="w-full h-full rounded-full border-4 border-primary bg-white"></div>
+</button>
+</div>
+</div>
+</div>
+<!-- Audio Waveform -->
+<div class="bg-primary/5 dark:bg-primary/10 rounded-xl p-4 border border-primary/20">
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-2">
+<span class="material-icons text-primary text-lg">mic</span>
+<span class="text-xs font-medium uppercase tracking-tighter">Microphone Input</span>
+</div>
+<span class="text-[10px] font-mono text-primary">-12.4 dB</span>
+</div>
+<div class="flex items-end justify-between h-8 gap-1">
+<div class="w-1 bg-primary/40 rounded-full h-2"></div>
+<div class="w-1 bg-primary/40 rounded-full h-4"></div>
+<div class="w-1 bg-primary/60 rounded-full h-6"></div>
+<div class="w-1 bg-primary rounded-full h-8"></div>
+<div class="w-1 bg-primary rounded-full h-5"></div>
+<div class="w-1 bg-primary/70 rounded-full h-7"></div>
+<div class="w-1 bg-primary/50 rounded-full h-3"></div>
+<div class="w-1 bg-primary/30 rounded-full h-5"></div>
+<div class="w-1 bg-primary/40 rounded-full h-4"></div>
+<div class="w-1 bg-primary/60 rounded-full h-6"></div>
+<div class="w-1 bg-primary rounded-full h-3"></div>
+<div class="w-1 bg-primary rounded-full h-5"></div>
+<div class="w-1 bg-primary/70 rounded-full h-8"></div>
+<div class="w-1 bg-primary/50 rounded-full h-6"></div>
+<div class="w-1 bg-primary/30 rounded-full h-2"></div>
+<div class="w-1 bg-primary/40 rounded-full h-4"></div>
+</div>
+</div>
+</section>
+<!-- Location Section (Bottom Half) -->
+<section class="space-y-4">
+<div class="flex items-center justify-between px-1">
+<h2 class="text-sm font-semibold uppercase tracking-widest text-primary">Geolocation</h2>
+<span class="px-2 py-0.5 rounded-full bg-green-500/20 text-green-500 text-[10px] font-bold">GPS LOCKED</span>
+</div>
+<!-- Map View -->
+<div class="relative aspect-square rounded-xl overflow-hidden border-2 border-primary/20 shadow-xl shadow-primary/5">
+<img alt="Map Interface" class="w-full h-full object-cover brightness-75 dark:brightness-50 grayscale-[0.2]" data-alt="Dark themed street map of a city" data-location="New York City" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxe-ZG-NEoW-n3TceJ-q44qDG1d3a9fxRJg85KvjatX5oijLCUIggTyk1COyLy_9POD1XhgJqrEk9OqGgSPQdxgU2mW2zVEnXt8vXYGIFIb0kBoGCF0kdOXazZyR59yssvaVwxC4yUkwvwUauLVUsq72XAYrwYf8-6Y3T92CBnh5QHzohnlTkt5cGePJADdr5JNLAwuukzw6GSUo5AEazbkRP7LPnpLGS5LaL6Y3xj6_3sxSOk3E1eJ8IBPC-j-ZdYh7VEdgTvzxo"/>
+<!-- Map Overlay UI -->
+<div class="absolute inset-0 pointer-events-none">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+<div class="relative">
+<div class="absolute inset-0 w-8 h-8 bg-primary rounded-full animate-ping opacity-30"></div>
+<div class="w-8 h-8 bg-primary rounded-full border-4 border-white dark:border-background-dark flex items-center justify-center shadow-lg relative z-10">
+<span class="material-icons text-white text-xs">navigation</span>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute bottom-4 right-4 flex flex-col gap-2 pointer-events-auto">
+<button class="w-10 h-10 rounded-lg bg-white dark:bg-slate-800 shadow-lg flex items-center justify-center text-primary">
+<span class="material-icons">add</span>
+</button>
+<button class="w-10 h-10 rounded-lg bg-white dark:bg-slate-800 shadow-lg flex items-center justify-center text-primary">
+<span class="material-icons">remove</span>
+</button>
+</div>
+</div>
+<!-- Stats Card -->
+<div class="grid grid-cols-2 gap-3">
+<div class="bg-primary/5 dark:bg-slate-800/50 p-3 rounded-xl border border-primary/10">
+<p class="text-[10px] text-slate-500 dark:text-slate-400 font-bold uppercase">Latitude</p>
+<p class="text-lg font-mono font-bold text-primary">40.7128° N</p>
+</div>
+<div class="bg-primary/5 dark:bg-slate-800/50 p-3 rounded-xl border border-primary/10">
+<p class="text-[10px] text-slate-500 dark:text-slate-400 font-bold uppercase">Longitude</p>
+<p class="text-lg font-mono font-bold text-primary">74.0060° W</p>
+</div>
+</div>
+</section>
+<!-- Action Button -->
+<div class="pt-4">
+<button class="w-full py-4 bg-primary hover:bg-primary/90 text-white rounded-xl font-bold flex items-center justify-center gap-3 shadow-lg shadow-primary/30 transition-all active:scale-[0.98]" onclick="window.print()">
+<span class="material-icons">print</span>
+                PRINT CAPABILITY REPORT
+            </button>
+<p class="text-center text-[10px] mt-4 text-slate-500 uppercase tracking-widest font-bold opacity-60">
+                PWA Core v2.4.0 • Build 8291
+            </p>
+</div>
+</main>
+<!-- Navigation Bar (iOS style) -->
+<nav class="fixed bottom-0 left-0 right-0 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-xl border-t border-primary/10 px-6 pb-6 pt-3 flex justify-around items-center z-50">
+<div class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-icons">dashboard</span>
+<span class="text-[10px] font-medium">Core</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-primary">
+<span class="material-icons">perm_media</span>
+<span class="text-[10px] font-medium">Tools</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-icons">offline_bolt</span>
+<span class="text-[10px] font-medium">Cache</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-icons">settings</span>
+<span class="text-[10px] font-medium">Prefs</span>
+</div>
+</nav>
+</body></html>

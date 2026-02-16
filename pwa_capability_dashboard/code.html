@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>PWA Capability Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            -webkit-tap-highlight-color: transparent;
+            overscroll-behavior-y: contain;
+        }
+        .ios-blur {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased selection:bg-primary/30">
+<!-- iOS Status Bar Spacer -->
+<div class="h-12 w-full bg-background-light dark:bg-background-dark sticky top-0 z-50"></div>
+<!-- Header Section -->
+<header class="px-6 py-4 flex items-center justify-between sticky top-12 z-40 bg-background-light/80 dark:bg-background-dark/80 ios-blur">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center overflow-hidden">
+<img alt="User profile avatar" class="w-full h-full object-cover" data-alt="Close up of a professional male portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMXU9BUWmXhmX4j6wd4TG3QvF0BUlPw-hsqQlnnVfchDEeh-S_5mztpqbCyGRcUKCLDhN89Jz61idAnWAGET6yJMUKiNqmwyXaJMSPp2Vqs6OS4QoebG9v_VJ7ySecO7kzWF4QxUXvEl0PWVJu-56jxXxWSHMF5SQHDwmJRMP2sJHplf4yJtQemtqP8fLdDqMe8azLyI7k4MGQ5NzZgA0l3pdfYP7TGuA7D4TFYQbvLYJAugQdp8IQbsYgVnFNfrC3dqwyQJwdRlo"/>
+</div>
+<div>
+<h1 class="text-lg font-bold leading-tight">Capability Hub</h1>
+<p class="text-xs text-primary font-medium flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                    PWA Mode Active
+                </p>
+</div>
+</div>
+<button class="bg-primary text-white text-xs font-bold px-4 py-2 rounded-full shadow-lg shadow-primary/20 flex items-center gap-2 active:scale-95 transition-transform">
+<span class="material-icons-round text-sm">download</span>
+            INSTALL
+        </button>
+</header>
+<main class="px-6 pb-32">
+<!-- iOS Installation Hint -->
+<div class="mt-4 mb-8 p-4 rounded-xl bg-primary/5 border border-primary/10 flex items-start gap-4">
+<div class="p-2 bg-primary/20 rounded-lg text-primary">
+<span class="material-icons-round">ios_share</span>
+</div>
+<div>
+<h3 class="text-sm font-semibold">Add to Home Screen</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">Tap the share button and select 'Add to Home Screen' for a native experience.</p>
+</div>
+</div>
+<!-- Capability Grid -->
+<div class="grid grid-cols-2 gap-4">
+<!-- Camera Card -->
+<div class="p-5 rounded-xl bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/50 shadow-sm flex flex-col gap-4 active:scale-95 transition-transform">
+<div class="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-500 flex items-center justify-center">
+<span class="material-icons-round">photo_camera</span>
+</div>
+<div>
+<h2 class="font-semibold text-sm">Camera</h2>
+<span class="text-[10px] font-bold uppercase tracking-wider text-green-500 mt-1 block">Ready</span>
+</div>
+</div>
+<!-- Microphone Card -->
+<div class="p-5 rounded-xl bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/50 shadow-sm flex flex-col gap-4 active:scale-95 transition-transform">
+<div class="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-500 flex items-center justify-center">
+<span class="material-icons-round">mic</span>
+</div>
+<div>
+<h2 class="font-semibold text-sm">Microphone</h2>
+<span class="text-[10px] font-bold uppercase tracking-wider text-primary mt-1 block">Active</span>
+</div>
+</div>
+<!-- Location Card -->
+<div class="p-5 rounded-xl bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/50 shadow-sm flex flex-col gap-4 active:scale-95 transition-transform">
+<div class="w-10 h-10 rounded-lg bg-orange-500/10 text-orange-500 flex items-center justify-center">
+<span class="material-icons-round">location_on</span>
+</div>
+<div>
+<h2 class="font-semibold text-sm">Location</h2>
+<span class="text-[10px] font-bold uppercase tracking-wider text-green-500 mt-1 block">Granted</span>
+</div>
+</div>
+<!-- Files Card -->
+<div class="p-5 rounded-xl bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/50 shadow-sm flex flex-col gap-4 active:scale-95 transition-transform">
+<div class="w-10 h-10 rounded-lg bg-indigo-500/10 text-indigo-500 flex items-center justify-center">
+<span class="material-icons-round">folder_open</span>
+</div>
+<div>
+<h2 class="font-semibold text-sm">Files</h2>
+<span class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mt-1 block">Idle</span>
+</div>
+</div>
+<!-- Motion Card -->
+<div class="p-5 rounded-xl bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/50 shadow-sm flex flex-col gap-4 active:scale-95 transition-transform">
+<div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-500 flex items-center justify-center">
+<span class="material-icons-round">screen_rotation</span>
+</div>
+<div>
+<h2 class="font-semibold text-sm">Motion</h2>
+<span class="text-[10px] font-bold uppercase tracking-wider text-green-500 mt-1 block">Supported</span>
+</div>
+</div>
+<!-- Battery Card -->
+<div class="p-5 rounded-xl bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/50 shadow-sm flex flex-col gap-4 active:scale-95 transition-transform">
+<div class="w-10 h-10 rounded-lg bg-red-500/10 text-red-500 flex items-center justify-center">
+<span class="material-icons-round">battery_charging_full</span>
+</div>
+<div>
+<h2 class="font-semibold text-sm">Battery</h2>
+<span class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mt-1 block">84%</span>
+</div>
+</div>
+<!-- Share Card -->
+<div class="p-5 rounded-xl bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/50 shadow-sm flex flex-col gap-4 active:scale-95 transition-transform">
+<div class="w-10 h-10 rounded-lg bg-pink-500/10 text-pink-500 flex items-center justify-center">
+<span class="material-icons-round">share</span>
+</div>
+<div>
+<h2 class="font-semibold text-sm">Share</h2>
+<span class="text-[10px] font-bold uppercase tracking-wider text-green-500 mt-1 block">Ready</span>
+</div>
+</div>
+<!-- Vibration Card -->
+<div class="p-5 rounded-xl bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/50 shadow-sm flex flex-col gap-4 active:scale-95 transition-transform">
+<div class="w-10 h-10 rounded-lg bg-yellow-500/10 text-yellow-500 flex items-center justify-center">
+<span class="material-icons-round">vibration</span>
+</div>
+<div>
+<h2 class="font-semibold text-sm">Vibration</h2>
+<span class="text-[10px] font-bold uppercase tracking-wider text-green-500 mt-1 block">Haptic Ready</span>
+</div>
+</div>
+<!-- Print Card -->
+<div class="p-5 rounded-xl bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/50 shadow-sm flex flex-col gap-4 active:scale-95 transition-transform">
+<div class="w-10 h-10 rounded-lg bg-cyan-500/10 text-cyan-500 flex items-center justify-center">
+<span class="material-icons-round">print</span>
+</div>
+<div>
+<h2 class="font-semibold text-sm">Print</h2>
+<span class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mt-1 block">Check</span>
+</div>
+</div>
+<!-- AR/VR Card -->
+<div class="p-5 rounded-xl bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/50 shadow-sm flex flex-col gap-4 active:scale-95 transition-transform">
+<div class="w-10 h-10 rounded-lg bg-violet-500/10 text-violet-500 flex items-center justify-center">
+<span class="material-icons-round">view_in_ar</span>
+</div>
+<div>
+<h2 class="font-semibold text-sm">WebXR</h2>
+<span class="text-[10px] font-bold uppercase tracking-wider text-amber-500 mt-1 block">Restricted</span>
+</div>
+</div>
+</div>
+<!-- System Stats Mini -->
+<section class="mt-8">
+<h2 class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em] mb-4">Device Info</h2>
+<div class="bg-white dark:bg-slate-800/30 border border-slate-200 dark:border-slate-700/50 rounded-xl overflow-hidden">
+<div class="px-5 py-3 flex justify-between items-center border-b border-slate-200 dark:border-slate-700/50">
+<span class="text-sm font-medium">Network</span>
+<span class="text-sm text-green-500 flex items-center gap-1"><span class="material-icons-round text-sm">wifi</span> Online</span>
+</div>
+<div class="px-5 py-3 flex justify-between items-center border-b border-slate-200 dark:border-slate-700/50">
+<span class="text-sm font-medium">Service Worker</span>
+<span class="text-sm text-primary font-semibold">Running</span>
+</div>
+<div class="px-5 py-3 flex justify-between items-center">
+<span class="text-sm font-medium">Cache Storage</span>
+<span class="text-sm text-slate-400">14.2 MB used</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation CTA -->
+<div class="fixed bottom-0 left-0 right-0 p-6 ios-blur bg-background-light/80 dark:bg-background-dark/80 z-50">
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-xl shadow-xl shadow-primary/30 flex items-center justify-center gap-3 active:scale-95 transition-all">
+<span class="material-icons-round">bolt</span>
+            TEST ALL CAPABILITIES
+        </button>
+<!-- Home Indicator (Visual) -->
+<div class="w-32 h-1.5 bg-slate-400/30 dark:bg-slate-700 rounded-full mx-auto mt-6"></div>
+</div>
+</body></html>
